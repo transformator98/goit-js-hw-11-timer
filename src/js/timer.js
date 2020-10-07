@@ -20,19 +20,7 @@ const refs = {
   hours: document.querySelector('[data-value="hours"]'),
   mins: document.querySelector('[data-value="mins"]'),
   secs: document.querySelector('[data-value="secs"]'),
-  yearInput: document.querySelector('[data-input="year"]'),
-  btnInput: document.querySelector('button[data-btn="btn"]'),
 };
-console.log(refs.yearInput.value);
-const yearVal = refs.yearInput.addEventListener('change', takeValue);
-
-// const formDate = new Date(`${yearVal},${monthVal},${daysVal}`);
-
-function takeValue(event) {
-  console.log(event);
-}
-console.log(yearVal);
-// console.log('formDate', formDate);
 
 const timer = {
   start() {
