@@ -1,42 +1,62 @@
-/*
- *
- * Создай плагин настраиваемого таймера, который ведет обратный отсчет до
- * предварительно определенной даты. Такой плагин может использоваться
- * в блогах и интернет-магазинах, страницах регистрации событий, во время
- * технического обслуживания и т. д.
- *
- *
- * Плагин ожидает следующую HTML-разметку и показывает четыре цифры:
- *  дни, часы, минуты и секунды в формате XX:XX:XX:XX.
- *  Количество дней может состоять из более чем двух цифр.
- */
 
-/*
- * Плагин это класс CountdownTimer, экземпляр которого создает новый таймер с настройками.
- */
 
 const refs = {
   days: document.querySelector('[data-value="days"]'),
   hours: document.querySelector('[data-value="hours"]'),
   mins: document.querySelector('[data-value="mins"]'),
   secs: document.querySelector('[data-value="secs"]'),
+  searchForm: document.querySelector('.js-search-form'),
+  
 };
 
-const timer = {
-  start() {
-    const targetDate = new Date('Jan 20, 2021');
 
-    setInterval(() => {
+refs.searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const inducateValue = form.elements.query.value;
+
+const timer = {
+    intervalId:null,
+     isActive: false,
+    
+    start() {
+    
+      if (this.isActive) {
+        return;
+      };
+
+    this.isActive = true;
+    const targetDate = new Date(`${inducateValue}`);
+
+    this.intervalId=setInterval(() => {
       const currentDate = Date.now();
 
       const delta = targetDate.getTime() - currentDate;
 
       updateClockFace(delta);
     }, 1000);
-  },
-};
-
+      
+     },
+     
+  }
 timer.start();
+});
+
+// const timer = {
+//   start() {
+//     const targetDate = new Date('Jan 20, 2021');
+
+//     setInterval(() => {
+//       const currentDate = Date.now();
+
+//       const delta = targetDate.getTime() - currentDate;
+
+//       updateClockFace(delta);
+//     }, 1000);
+//   },
+// };
+
+// timer.start();
 
 /*
  *
