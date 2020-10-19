@@ -1,7 +1,7 @@
 import updateClockFace from './update-clock-face';
 
 export default {
-  searchQuery: '',
+  searchQuery: '2020, 10, 20',
   intervalId: null,
   isActive: false,
 
@@ -12,7 +12,8 @@ export default {
 
     this.isActive = true;
 
-    const targetDate = new Date(`${this.searchQuery}`);
+    const targetDate = new Date(`${this.query}`);
+    console.log('this.searchQuery:', this.query);
 
     this.intervalId = setInterval(() => {
       const currentDate = Date.now();

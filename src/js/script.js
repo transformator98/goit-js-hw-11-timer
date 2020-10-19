@@ -5,7 +5,8 @@ refs.searchForm.addEventListener('submit', event => {
   event.preventDefault();
   const form = event.currentTarget;
   timer.query = form.elements.query.value;
-  console.log('timer.query', timer.query);
+  // console.dir('value:', form.elements.query.value);
+
   form.reset();
   timer.start();
 });
